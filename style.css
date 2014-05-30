@@ -1,0 +1,133 @@
+body {
+	margin: 0;
+	background-color: #707070;
+}
+
+/*Clearfix*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+
+#content {
+	width: 1800px;
+	margin: 27px auto;
+}
+
+#content .containers {
+	float: left;
+	height: 675px;
+}
+
+#content #categories {
+	position: relative;
+	width: 300px;
+	background-color: #686868; 
+}
+
+#content #categories #categ-options {
+	background-color: #484848;
+    bottom: 0;
+    height: 40px;
+    position: absolute;
+    width: 300px;
+}
+
+#content #categories #categ-options #add-categ {
+	float: left;
+	width: 50px;
+	height: 30px;
+	margin: 5px 0 5px 20px;
+	background: url("img/add.png") no-repeat center;
+}
+
+#content #categories #categ-options #edit-categ {
+	float: left;
+	width: 50px;
+	height: 30px;
+	margin: 5px 0px;
+	background: url("img/edit.png") no-repeat center;
+}
+
+#content #categories #categ-options #del-categ {
+	float: left;
+	width: 50px;
+	height: 30px;
+	margin: 5px 0px;
+	background: url("img/delete.png") no-repeat center;
+}
+
+#content #tasks,
+#content #editor {
+	width: 725px;
+	height: 625px;
+}
+
+#content #categories .category {
+	background-color: #484848;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: -4px 11px 24px -11px #686868 inset;
+    height: 40px;
+    padding-top: 10px;
+    width: 100%;
+    margin-top: -2px;
+}
+
+#content #categories .category p {
+	font-family: 'Oswald', sans-serif;
+	color: #fff;
+	font-weight: 700;
+	margin: 0 50px 0 70px;
+	padding-left: 30px;
+	background: url("img/list.png") left no-repeat;
+	background-size: 20px;
+}
+
+
+/* ---------------------------- TASKS ------------------------------ */
+#content #tasks {
+	padding: 25px 0;
+	background-color: #fff;
+}
+
+#content #tasks .task {
+	position: relative;
+	float: left;
+	width: 200px;
+	height: 200px;
+	margin-left: 25px;
+	margin-bottom: 20px;
+	background: url("img/post-it-note.png") no-repeat;
+	background-size: 200px;
+}
+
+#content #tasks .pin {
+	position: absolute;
+	top: -12px;
+	left: -12px;
+	background: url("img/pin.png") center no-repeat;
+	width: 25px;
+	height: 25px;
+	ransform:rotate(-92deg);
+	-ms-transform:rotate(-92deg); 
+	-webkit-transform:rotate(-92deg);
+	-moz-transform:rotate(-92deg);
+}
+
+#content #categories .selected p {
+	color: #FF9900;
+}

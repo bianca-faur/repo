@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type="text/css">
+		<script type="text/javascript" src="functions.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#add-categ").click(function() {addCateg();});
+				selectCateg();	
+				deleteCateg();
+				editCateg();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<div class="clearfix">
+				<div id="categories" class="containers">
+					<div id="work" class="category"><p>Work</p></div>
+					<div id="work" class="category"><p>Shopping</p></div>
+					<div id="categ-options">
+						<div id="add-categ"></div>
+						<div id="edit-categ"></div>
+						<div id="del-categ"></div>
+					</div>
+				</div>
+				<div id="tasks" class="containers">
+					<div class="task" contenteditable="true">
+						<div class="pin"></div>
+					</div>
+				</div>
+				<div id="editor" class="containers"></div>
+			</div>
+		</div>
+	</body>
+</html>
