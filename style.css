@@ -4,26 +4,22 @@ body {
 }
 
 /*Clearfix*/
+.clearfix:before,
 .clearfix:after {
-    content: ".";
-    display: block;
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
     clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
 }
+
 .clearfix {
-    display: inline-block;
-}
-html[xmlns] .clearfix {
-    display: block;
-}
-* html .clearfix {
-    height: 1%;
+    *zoom: 1;
 }
 
 #content {
-	width: 1800px;
+	width: 1024px;
 	margin: 27px auto;
 }
 
@@ -34,7 +30,7 @@ html[xmlns] .clearfix {
 
 #content #categories {
 	position: relative;
-	width: 300px;
+	width: 289px;
 	background-color: #686868; 
 }
 
@@ -42,8 +38,7 @@ html[xmlns] .clearfix {
 	background-color: #484848;
     bottom: 0;
     height: 40px;
-    position: absolute;
-    width: 300px;
+    width: 289px;
 }
 
 #content #categories #categ-options #add-categ {
@@ -70,9 +65,8 @@ html[xmlns] .clearfix {
 	background: url("img/delete.png") no-repeat center;
 }
 
-#content #tasks,
-#content #editor {
-	width: 725px;
+#content #tasks {
+	width: 735px;
 	height: 625px;
 }
 
@@ -85,6 +79,7 @@ html[xmlns] .clearfix {
     padding-top: 10px;
     width: 100%;
     margin-top: -2px;
+	cursor: default;
 }
 
 #content #categories .category p {
@@ -107,12 +102,23 @@ html[xmlns] .clearfix {
 #content #tasks .task {
 	position: relative;
 	float: left;
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	min-height: 180px;
+	max-height: 300px;
 	margin-left: 25px;
 	margin-bottom: 20px;
 	background: url("img/post-it-note.png") no-repeat;
 	background-size: 200px;
+	
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	padding: 20px;
+}
+
+#content #tasks .task p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	margin: 20px;
 }
 
 #content #tasks .pin {
@@ -128,6 +134,27 @@ html[xmlns] .clearfix {
 	-moz-transform:rotate(-92deg);
 }
 
+#content #tasks .status {
+	position: absolute;
+    right: 18px;
+    top: 0;
+    width: 63px;
+}
+
 #content #categories .selected p {
 	color: #FF9900;
+}
+
+#content form {
+	margin: 25px 0 10px 25px;
+}
+
+#content textarea {
+	height: 44px;
+    width: 250px;
+	border: 0;
+}
+
+#edit_btn {
+	display: none;
 }
