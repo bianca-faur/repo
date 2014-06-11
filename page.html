@@ -2,41 +2,77 @@
 <html>
 	<head>
 		<!-- links -->
-		<link rel="stylesheet" href="style.css">
+		<!-- <link rel="stylesheet" href="style.css"> -->
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet/less" type="text/css" href="style.less">
 		<!-- scripts -->
-		<script type="text/javascript" src="functions.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="underscore.js"></script>
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="functions.js"></script>
+		<script>
+		  less = {
+		    env: "development",
+		    async: false,
+		    fileAsync: false,
+		    poll: 1000,
+		    functions: {},
+		    dumpLineNumbers: "comments",
+		    relativeUrls: false
+		  };
+		</script>
+		<script src="less.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				showNotes();
-				$("#add_button").click(function() {addNewNote();});
-				selectedCateg();
-				deleteNote();
-				toggleStatus();
-				filterNotes();
-				getNote();
-				editNote();
-				// localStorage.clear();
+				stickyNote.filterNotes(notes);
+				general.selectCateg();
+				general.addSticky();
+				$("#tasks").on("dblclick", "div.text", function() {
+					$(this).attr("contenteditable", true);
+					$(this).keydown(function(e) {
+						if(e.keyCode == 13) {
+							stickyNote.editSticky(this);
+							$(this).attr("contenteditable", false);
+						}
+					});
+				});
+				$("#tasks").on("click","div.pin", function() {
+					var conf = confirm("Are you sure you want tot delete this note?");
+					if(conf) { 
+						var key = $(this).parent().attr("id");
+						stickyNote.deleteNote(key);
+						}
+				});
+				stickyNote.statistics();
+				stickyNote.toggleStatus();
+				$(".category").click(function() {
+					var categ = $(this).attr("id");
+					stickyNote.filterNotes(categ);
+				});
+				$("#del_all").click(function() {
+					var conf = confirm("Are you sure you want to delete filtered stickies?");
+					if(conf) {
+						$(".task").each(function() {
+							var id = $(this).attr("id");
+							stickyNote.deleteNote(id);
+						});	
+					}
+				});
 			});
 		</script>
 	</head>
 	<body>
 		<div id="content" class="clearfix">
-				<div id="categories" class="containers">
-					<form>
-						<textarea id="note"></textarea>
-						<input type="button" id="add_button" value="Add Sticky Note">
-						<input type="button" id="edit_btn" value="Edit Sticky Note">
-					</form>
-					<div id="categ-options">
-						<div id="all" class="category selected"><p>All</p></div>
-						<div id="to-do" class="category"><p>To do</p></div>
-						<div id="done" class="category"><p>Done</p></div>
-					</div>
-				</div>
-				<div id="tasks" class="containers"></div>
+			<div id="categories" class="containers">
+				<input type="button" id="add_button" value="Add Sticky Note">
+				<input type="button" id="del_all" value="Delete displaied stickies">
+
+				<div id="notes" class="category selected"><p>All <span></span></p></div>
+				<div id="to_do" class="category"><p>To do <span></span></p></div>
+				<div id="done" class="category"><p>Done <span></span></p></div>
+			</div>
+			<div id="tasks" class="containers"></div>
 		</div>
 	</body>
 </html>
